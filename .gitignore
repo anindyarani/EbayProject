@@ -43,5 +43,5 @@ bin/
 .DS_Store
 
 # Mengabaikan file konfigurasi yang berisi data sensitif
-src/test/resources/config.properties
-config.properties
+src/test/resources/config/staging.properties
+#**/config/*.properties
