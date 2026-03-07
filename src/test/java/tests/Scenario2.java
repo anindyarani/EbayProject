@@ -9,9 +9,9 @@ import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-public class Scenario1 extends BaseTest {
+public class Scenario2 extends BaseTest {
     @Test(groups = {"smoke"})
-    public void Scenario1() {
+    public void Scenario2() {
         WebDriver driver = DriverManager.getDriver();
         LoginPage loginPage = new LoginPage(DriverManager.getDriver());
         HomePage homePage = new HomePage(DriverManager.getDriver());
@@ -21,17 +21,14 @@ public class Scenario1 extends BaseTest {
 
         loginPage.login(config.getProperty("username"), config.getProperty("password"));
         homePage.verifyIsInHomepage();
-        homePage.moveToElectronicsPage();
-        electronicsPage.verifyIsInElectronicsPage();
-        electronicsPage.moveToCellPhoneAccessoriesCategory();
-        electronicsPage.verifyIsInCellPhoneAccessoriesCategory();
-        electronicsPage.moveToAdvanceSearch();
-        advanceSearchPage.verifyIsInAdvanceSearch();
-        advanceSearchPage.advancedSearch(config.getProperty("keyword"));
-        advanceSearchPage.verifySearchSuccessfully();
 
+        // Ambil keyword dari properties
+        String searchKeyword = config.getProperty("keyword2");
 
+        homePage.searchProduct(searchKeyword);
+
+        // Kirim keyword tersebut ke dalam method assertion
+        homePage.verifyFirstResultContainsKeyword(searchKeyword);
 
     }
-
 }

@@ -10,7 +10,7 @@
             </run>
         </groups>
         <classes>
-            <class name="tests.Scenario1"/>
+            <class name="tests.Scenario2"/>
         </classes>
     </test>
 </suite>
